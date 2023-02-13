@@ -10,13 +10,17 @@ Make sure you louched server application first, only then Client.
 <div style="padding-left: 40px">
 
 ### Installation
-VĖLIAU
+Open terminal in __./server__ folder and run: 
+```
+npm install
+```
 
 ### Launch for development
-VĖLIAU
+Open terminal in __./server__ folder and run:
+```
+npm run server
+``` 
 
-### Launch for production
-VĖLIAU
 </div>
 
 ## Launching Client application
@@ -26,7 +30,7 @@ VĖLIAU
 ### Installation
 Open terminal in __./client__ folder and run 
 ```
-npm i
+npm install
 ```
 
 ### Launch for development
