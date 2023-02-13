@@ -6,7 +6,7 @@ import Navbar from './navbar/navbar';
 const NavbarLayout = () => (
   <Box component="div">
     <Navbar />
-    <Box component="main" display="grid" mx={2} my={10} justifyItems="center">
+    <Box component="main" m={4} display="grid" justifyItems="center">
       <Outlet />
     </Box>
   </Box>
