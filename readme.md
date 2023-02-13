@@ -24,12 +24,13 @@ VĖLIAU
 <div style="padding-left: 40px">
 
 ### Installation
-Open terminal in client/ folder and run command:
+Open terminal in __./client__ folder and run 
 ```
 npm i
 ```
 
 ### Launch for development
+Open terminal in __./client__ folder and run 
 ```
 npm run start
 ```
