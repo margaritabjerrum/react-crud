@@ -1,5 +1,11 @@
+const BikePagePath = '/bike-page/' as const;
+
 const routes = {
   HomePage: '/',
+  BikePage: {
+    routePath: `${BikePagePath}:id`,
+    createLink: (id: string | number) => `${BikePagePath}${id}`,
+  },
 } as const;
 
 export type Routes = typeof routes;
