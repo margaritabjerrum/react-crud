@@ -3,6 +3,7 @@ import { Typography } from '@mui/material';
 
 const Header = () => (
   <Typography
+    mt={3}
     color="primary"
     variant="h3"
     component="h1"
