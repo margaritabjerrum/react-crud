@@ -21,16 +21,27 @@ const fetchBike = async (id: string | number) => {
   return data;
 };
 
-// const createBike = async (bikeData: BikeModel) => {
-//   await api.post('/bikes', {
-//     bikeData,
-//   });
-// };
+const createBike = async (bikeData: Omit<BikeModel, 'id'>) => {
+  await api.post('/bikes', {
+    brand: bikeData.brand,
+    model: bikeData.model,
+    year: bikeData.year,
+    price: bikeData.price,
+    stats: {
+      engine: bikeData.stats.engine,
+      power: bikeData.stats.power,
+      seatHeight: bikeData.stats.seatHeight,
+      weight: bikeData.stats.weight,
+
+    },
+    images: bikeData.images,
+  });
+};
 
 const ApiService = {
   fetchBikes,
   fetchBike,
-  // createBike,
+  createBike,
 };
 
 export default ApiService;

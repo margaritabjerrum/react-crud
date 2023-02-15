@@ -5,7 +5,7 @@ import {
   TextField,
   Button,
 } from '@mui/material';
-// import ApiService from 'services/api-service';
+import ApiService from 'services/api-service';
 import ImagesField from './images-field';
 import MainStats from './main-stats-field';
 import * as Styled from './styled';
@@ -58,9 +58,9 @@ type BikeFormPageProps = {
 const BikeFormPage: React.FC<BikeFormPageProps> = () => {
   const formRef = React.useRef<HTMLFormElement | null>(null);
 
-  // const postBikeData = async (bikeData: BikeModel) => {
-  //   await ApiService.createBike(bikeData);
-  // };
+  const postBikeData = async (bikeData: Omit<BikeModel, 'id'>) => {
+    await ApiService.createBike(bikeData);
+  };
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
@@ -69,7 +69,7 @@ const BikeFormPage: React.FC<BikeFormPageProps> = () => {
     try {
       const values = formatValues(formRef.current);
       console.log(values);
-      // postBikeData(values);
+      postBikeData(values);
     } catch (error) {
       alert(error instanceof Error ? error.message : error);
     }
