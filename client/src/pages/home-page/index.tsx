@@ -1,9 +1,10 @@
 import React from 'react';
 import ApiService from 'services/api-service';
-import { } from '@mui/material';
+import { Container } from '@mui/material';
 import BikeCard from './bikes-list/bike-card';
 import Header from './bikes-list/header';
 import * as Styled from './styled';
+import AdminHeader from './bikes-list/admin-header';
 
 const HomePage = () => {
   const [bikes, setBikes] = React.useState<BikeModel[]>([]);
@@ -16,7 +17,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <Container>
+      <AdminHeader />
       <Header />
       <Styled.BikeCardGrid>
         {bikes.map((bike) => (
@@ -26,7 +28,7 @@ const HomePage = () => {
           />
         ))}
       </Styled.BikeCardGrid>
-    </>
+    </Container>
   );
 };
 

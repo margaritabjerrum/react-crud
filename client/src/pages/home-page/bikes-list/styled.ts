@@ -16,3 +16,11 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
     flexGrow: 1,
   },
 }));
+
+export const AdminActions = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  display: 'flex',
+  gap: theme.spacing(1),
+  top: theme.spacing(1),
+  right: theme.spacing(1),
+}));

@@ -29,8 +29,19 @@ const BikeCard: React.FC<BikeCardProps> = ({
   const navigate = useNavigate();
 
   return (
-    <Stack sx={{ boxShadow: 3, borderRadius: 2, overflow: 'hidden' }}>
+    <Stack sx={{
+      boxShadow: 3, borderRadius: 2, overflow: 'hidden', position: 'relative',
+    }}
+    >
       <Img src={images[0]} alt="" sx={{ aspectRatio: '1.42', width: 1 }} />
+      <Styled.AdminActions>
+        <Button variant="contained" color="warning" size="small">
+          Update
+        </Button>
+        <Button variant="contained" color="error" size="small">
+          Delete
+        </Button>
+      </Styled.AdminActions>
       <Styled.ContentWrapper>
         <Typography variant="h5" component="p">
           {model}
@@ -60,8 +71,9 @@ const BikeCard: React.FC<BikeCardProps> = ({
           sx={{ borderRadius: 0 }}
           onClick={() => navigate(routes.BikePage.createLink(id))}
         >
-          View More
+          View Details
         </Button>
+        <Stack display="none">{`${engine} ${seatHeight} ${weight}`}</Stack>
       </Styled.ButtonContainer>
     </Stack>
   );

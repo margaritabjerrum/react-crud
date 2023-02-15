@@ -21,9 +21,16 @@ const fetchBike = async (id: string | number) => {
   return data;
 };
 
+// const createBike = async (bikeData: BikeModel) => {
+//   await api.post('/bikes', {
+//     bikeData,
+//   });
+// };
+
 const ApiService = {
   fetchBikes,
   fetchBike,
+  // createBike,
 };
 
 export default ApiService;
