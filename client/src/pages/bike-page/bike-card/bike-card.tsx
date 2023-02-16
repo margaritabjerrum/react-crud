@@ -23,7 +23,7 @@ const BikeCard: React.FC<BikeCardProps> = ({
   },
   images,
 }) => (
-  <Stack m={{ md: 12 }}>
+  <Stack mt={{ md: 10 }}>
     <Grid container width="auto" spacing={2} alignItems="center">
       <Grid item xs={12} md={6}>
         <Swiper navigation modules={[Navigation]} className="mySwiper">
@@ -39,20 +39,23 @@ const BikeCard: React.FC<BikeCardProps> = ({
       <Grid item xs={12} md={6}>
         <Styled.ContentWrapper>
           <Typography variant="h3" color="primary" sx={{ mb: 5 }}>{`${brand} - ${model}`}</Typography>
-          <Typography
-            gutterBottom
-            variant="h4"
-            component="h1"
-            color="primary.dark"
-          >
-            At a glance
-          </Typography>
-          <Typography variant="h5">{`Year: ${year}`}</Typography>
-          <Typography variant="h5">{`Price: ${price.toFixed(2)}€`}</Typography>
-          <Typography variant="h5">{`Engine: ${engine}`}</Typography>
-          <Typography variant="h5">{`Power: ${power}`}</Typography>
-          <Typography variant="h5">{`Seat Height: ${seatHeight}`}</Typography>
-          <Typography variant="h5">{`Weight: ${weight}`}</Typography>
+          <Stack alignItems="center">
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="h1"
+              color="primary.dark"
+            >
+              At a glance
+            </Typography>
+            <Typography variant="h5">{`Year: ${year}`}</Typography>
+            <Typography variant="h5">{`Price: ${price.toFixed(2)}€`}</Typography>
+            <Typography variant="h5">{`Engine: ${engine}`}</Typography>
+            <Typography variant="h5">{`Power: ${power}`}</Typography>
+            <Typography variant="h5">{`Seat Height: ${seatHeight}`}</Typography>
+            <Typography variant="h5">{`Weight: ${weight}`}</Typography>
+            <Typography display="none">{id}</Typography>
+          </Stack>
         </Styled.ContentWrapper>
       </Grid>
     </Grid>

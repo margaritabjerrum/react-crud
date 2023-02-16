@@ -38,10 +38,15 @@ const createBike = async (bikeData: Omit<BikeModel, 'id'>) => {
   });
 };
 
+const deleteBike = async (id: string) => {
+  await api.delete(`bikes/${id}`);
+};
+
 const ApiService = {
   fetchBikes,
   fetchBike,
   createBike,
+  deleteBike,
 };
 
 export default ApiService;

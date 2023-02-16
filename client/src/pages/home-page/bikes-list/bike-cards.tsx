@@ -8,25 +8,43 @@ import {
 import Img from 'components/layout/ui/img';
 import routes from 'navigation/routes';
 import { useNavigate } from 'react-router-dom';
+import ApiService from 'services/api-service';
 import * as Styled from './styled';
 
-type BikeCardProps = BikeModel;
+type BikeCardProps = {
+  bike: BikeModel,
+  onDelete: (id: string) => void,
+};
 
 const BikeCard: React.FC<BikeCardProps> = ({
-  id,
-  brand,
-  model,
-  year,
-  price,
-  stats: {
-    engine,
-    power,
-    seatHeight,
-    weight,
+  bike: {
+    id,
+    brand,
+    model,
+    year,
+    price,
+    stats: {
+      engine,
+      power,
+      seatHeight,
+      weight,
+    },
+    images,
   },
-  images,
+  onDelete,
 }) => {
   const navigate = useNavigate();
+
+  const handleDelete = async (bikeId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await ApiService.deleteBike(bikeId);
+      await onDelete(id);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
 
   return (
     <Stack sx={{
@@ -38,7 +56,12 @@ const BikeCard: React.FC<BikeCardProps> = ({
         <Button variant="contained" color="warning" size="small">
           Update
         </Button>
-        <Button variant="contained" color="error" size="small">
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          onClick={(e) => handleDelete(id, e)}
+        >
           Delete
         </Button>
       </Styled.AdminActions>
