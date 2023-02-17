@@ -6,11 +6,30 @@ import React from 'react'; import {
   InputAdornment,
 } from '@mui/material';
 
-const MainStats = () => (
+type MainStatsFieldProps = {
+  defaultEngine?: string,
+  defaultPower?: string,
+  defaultSeatHeight?: string,
+  defaultWeight?: string,
+};
+
+const MainStatsField: React.FC<MainStatsFieldProps> = ({
+  defaultEngine,
+  defaultPower,
+  defaultSeatHeight,
+  defaultWeight,
+}) => (
   <Stack sx={{ gap: 2 }}>
     <Typography variant="subtitle1" sx={{ pl: 1 }}>Main Stats</Typography>
     <Box sx={{ display: 'flex', gap: 2 }}>
-      <TextField label="Engine" fullWidth variant="outlined" name="engine" required />
+      <TextField
+        label="Engine"
+        fullWidth
+        variant="outlined"
+        name="engine"
+        required
+        defaultValue={defaultEngine}
+      />
       <TextField
         label="Power"
         fullWidth
@@ -20,6 +39,7 @@ const MainStats = () => (
         InputProps={{
           endAdornment: <InputAdornment position="end">bhp</InputAdornment>,
         }}
+        defaultValue={defaultPower}
       />
     </Box>
     <Box sx={{ display: 'flex', gap: 2 }}>
@@ -32,6 +52,8 @@ const MainStats = () => (
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>,
         }}
+        defaultValue={defaultSeatHeight}
+
       />
       <TextField
         label="Weight"
@@ -42,9 +64,11 @@ const MainStats = () => (
         InputProps={{
           endAdornment: <InputAdornment position="end">kg</InputAdornment>,
         }}
+        defaultValue={defaultWeight}
+
       />
     </Box>
   </Stack>
 );
 
-export default MainStats;
+export default MainStatsField;

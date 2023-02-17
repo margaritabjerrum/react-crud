@@ -21,7 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: routes.BikeCreatePage,
-        element: <BikeFormPage mode="create" />,
+        element: <BikeFormPage />,
+      },
+      {
+        path: routes.BikeUpdatePage.routePath,
+        element: <BikeFormPage mode="update" />,
       },
     ],
   },

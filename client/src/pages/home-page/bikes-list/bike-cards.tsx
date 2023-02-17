@@ -38,7 +38,12 @@ const BikeCard: React.FC<BikeCardProps> = ({
     >
       <Img src={images[0]} alt="" sx={{ aspectRatio: '1.42', width: 1 }} />
       <Styled.AdminActions>
-        <Button variant="contained" color="warning" size="small">
+        <Button
+          variant="contained"
+          color="warning"
+          size="small"
+          onClick={() => navigate(routes.BikeUpdatePage.createLink(id))}
+        >
           Update
         </Button>
         <Button

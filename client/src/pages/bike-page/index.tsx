@@ -1,23 +1,14 @@
-import routes from 'navigation/routes';
 import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import ApiService from 'services/api-service';
 import { Box } from '@mui/material';
+import useBike from 'hooks/useBike';
+import { Navigate, useParams } from 'react-router-dom';
+import routes from 'navigation/routes';
 import BikeCard from './bike-card/bike-card';
 
 const BikePage = () => {
   const { id } = useParams();
 
-  const [bike, getBike] = React.useState<BikeModel | undefined>(undefined);
-
-  React.useEffect(() => {
-    if (id !== undefined) {
-      (async () => {
-        const fetchedBike = await ApiService.fetchBike(id);
-        getBike(fetchedBike);
-      })();
-    }
-  }, [id]);
+  const bike = useBike(id);
 
   if (id === undefined) return <Navigate to={routes.HomePage} />;
 

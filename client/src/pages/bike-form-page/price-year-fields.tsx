@@ -4,7 +4,15 @@ import {
   Box,
 } from '@mui/material';
 
-const PriceYearFields = () => (
+type PriceYearFieldsProps = {
+  defaultPrice?: number,
+  defaultYear?: number,
+};
+
+const PriceYearFields: React.FC<PriceYearFieldsProps> = ({
+  defaultPrice,
+  defaultYear,
+}) => (
   <Box sx={{ display: 'flex', gap: 2 }}>
     <TextField
       label="Price"
@@ -14,6 +22,7 @@ const PriceYearFields = () => (
       type="number"
       inputProps={{ step: '0.01' }}
       required
+      defaultValue={defaultPrice}
     />
     <TextField
       label="Year"
@@ -22,6 +31,7 @@ const PriceYearFields = () => (
       name="year"
       type="number"
       required
+      defaultValue={defaultYear}
     />
   </Box>
 );

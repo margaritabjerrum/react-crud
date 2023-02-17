@@ -2,65 +2,31 @@ import React from 'react';
 import {
   Stack,
   Typography,
-  TextField,
   Button,
 } from '@mui/material';
 import ApiService from 'services/api-service';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import routes from 'navigation/routes';
+import useBike from 'hooks/useBike';
 import ImagesField from './images-field';
-import MainStats from './main-stats-field';
+import MainStatsField from './main-stats-field';
 import * as Styled from './styled';
 import PriceYearFields from './price-year-fields';
-
-const formatValues = (form: HTMLFormElement) => {
-  const formData = new FormData(form);
-
-  const brand = formData.get('brand');
-  const model = formData.get('model');
-  const engine = formData.get('engine');
-  const power = formData.get('power');
-  const seatHeight = formData.get('seatHeight');
-  const weight = formData.get('weight');
-  const price = formData.get('price');
-  const year = formData.get('year');
-  const images = formData.getAll('images');
-
-  if (brand === null || brand instanceof File || brand.length < 2) throw new Error('incorrect Brand');
-  if (model === null || model instanceof File || model.length < 2) throw new Error('incorrect Model');
-  if (engine === null || engine instanceof File || engine.length < 2) throw new Error('incorrect Engine');
-  if (power === null || power instanceof File || power.length < 2) throw new Error('incorrect Power');
-  if (seatHeight === null || seatHeight instanceof File || seatHeight.length < 2) throw new Error('incorrect Seat Height');
-  if (weight === null || weight instanceof File || weight.length < 2) throw new Error('incorrect Weight');
-  if (price === null || price instanceof File || price.length < 1) throw new Error('incorrect Price');
-  if (year === null || year instanceof File || year.length < 1) throw new Error('incorrect Year');
-  images.forEach((img, i) => {
-    if (img instanceof File || img.length < 2) throw new Error(`incorrect Image nr: ${i + 1}`);
-  });
-
-  return {
-    brand,
-    model,
-    year: Number(year),
-    price: Number(Number(price).toFixed(2)),
-    stats: {
-      engine,
-      power: `${power} bhp`,
-      seatHeight: `${seatHeight}mm`,
-      weight: `${weight}kg`,
-    },
-    images: images as string[],
-  };
-};
+import { btnColorMap, btnMap, titleMap } from './data';
+import { formatValues } from './helpers';
+import BrandModelField from './brand-model-fields';
 
 type BikeFormPageProps = {
-  mode?: 'create' | 'edit'
+  mode?: 'create' | 'update'
 };
 
-const BikeFormPage: React.FC<BikeFormPageProps> = () => {
+const BikeFormPage: React.FC<BikeFormPageProps> = ({ mode = 'create' }) => {
+  const formRef = React.useRef<HTMLFormElement | null>(null);
+
   const navigate = useNavigate();
 
-  const formRef = React.useRef<HTMLFormElement | null>(null);
+  const { id } = useParams();
+  const bike = useBike(id);
 
   const postBikeData = async (bikeData: Omit<BikeModel, 'id'>) => {
     await ApiService.createBike(bikeData);
@@ -73,31 +39,47 @@ const BikeFormPage: React.FC<BikeFormPageProps> = () => {
 
     try {
       const values = formatValues(formRef.current);
-      postBikeData(values);
+      if (mode === 'create') {
+        postBikeData(values);
+      } else {
+        console.log('Bike has been updated');
+      }
     } catch (error) {
       alert(error instanceof Error ? error.message : error);
     }
   };
 
+  if (mode === 'update' && bike === undefined) return null;
+
   return (
     <Styled.Container>
       <Styled.PaperForm elevation={4} onSubmit={handleSubmit} ref={formRef}>
-        <Typography variant="h4" color="primary" sx={{ textAlign: 'center' }}>Add New Motorcycle</Typography>
+        <Typography
+          variant="h4"
+          color="primary"
+          sx={{ textAlign: 'center' }}
+        >
+          {titleMap[mode]}
+        </Typography>
         <Stack sx={{ gap: 2, mt: 2 }}>
-          <TextField label="Brand" fullWidth variant="outlined" name="brand" required />
-          <TextField label="Model" fullWidth variant="outlined" name="model" required />
-          <MainStats />
-          <ImagesField />
-          <PriceYearFields />
+          <BrandModelField defaultBrand={bike?.brand} defaultModel={bike?.model} />
+          <MainStatsField
+            defaultEngine={bike?.stats.engine}
+            defaultPower={bike?.stats.power.slice(0, -4)}
+            defaultSeatHeight={bike?.stats.seatHeight.slice(0, -2)}
+            defaultWeight={bike?.stats.weight.slice(0, -2)}
+          />
+          <ImagesField defaultImages={bike?.images} />
+          <PriceYearFields defaultPrice={bike?.price} defaultYear={bike?.year} />
           <Stack alignItems="center" sx={{ mt: 2 }}>
             <Button
               type="submit"
-              color="primary"
+              color={btnColorMap[mode]}
               variant="contained"
               size="large"
               fullWidth
             >
-              Create
+              {btnMap[mode]}
             </Button>
           </Stack>
         </Stack>
