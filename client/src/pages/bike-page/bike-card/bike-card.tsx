@@ -26,7 +26,13 @@ const BikeCard: React.FC<BikeCardProps> = ({
   <Stack mt={{ md: 10 }}>
     <Grid container width="auto" spacing={2} alignItems="center">
       <Grid item xs={12} md={6}>
-        <Swiper navigation modules={[Navigation]} className="mySwiper">
+        <Swiper
+          navigation
+          modules={[Navigation]}
+          className="mySwiper"
+          slidesPerView="auto"
+          loop
+        >
           {
             images.map((img) => (
               <SwiperSlide key={img}>

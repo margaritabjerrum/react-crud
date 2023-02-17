@@ -9,20 +9,18 @@ import AdminHeader from './bikes-list/admin-header';
 const HomePage = () => {
   const [bikes, setBikes] = React.useState<BikeModel[]>([]);
 
+  const onDelete = async (id: string) => {
+    await ApiService.deleteBike(id);
+    const fetchedBikes = await ApiService.fetchBikes();
+    setBikes(fetchedBikes);
+  };
+
   React.useEffect(() => {
     (async () => {
       const fetchedBikes = await ApiService.fetchBikes();
       setBikes(fetchedBikes);
     })();
   }, []);
-
-  const onDelete = (bikeId: string) => {
-    try {
-      setBikes(bikes.filter((bike: BikeModel) => bike.id !== bikeId));
-    } catch (error) {
-      console.log((error as Error).message);
-    }
-  };
 
   return (
     <Container>
@@ -32,8 +30,8 @@ const HomePage = () => {
         {bikes.map((bike) => (
           <BikeCard
             key={bike.id}
-            bike={bike}
-            onDelete={onDelete}
+            {...bike}
+            onDelete={() => onDelete(bike.id)}
           />
         ))}
       </Styled.BikeCardGrid>
