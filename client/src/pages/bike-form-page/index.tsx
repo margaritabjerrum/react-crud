@@ -33,6 +33,15 @@ const BikeFormPage: React.FC<BikeFormPageProps> = ({ mode = 'create' }) => {
     navigate(routes.HomePage);
   };
 
+  const updateBikeData = async (bikeId: string, bikeData: Omit<BikeModel, 'id'>) => {
+    try {
+      await ApiService.updateBike(bikeId, bikeData);
+      navigate(routes.HomePage);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (formRef.current === null) return;
@@ -41,9 +50,7 @@ const BikeFormPage: React.FC<BikeFormPageProps> = ({ mode = 'create' }) => {
       const values = formatValues(formRef.current);
       if (mode === 'create') {
         postBikeData(values);
-      } else {
-        console.log('Bike has been updated');
-      }
+      } else if (id !== undefined) updateBikeData(id, values);
     } catch (error) {
       alert(error instanceof Error ? error.message : error);
     }

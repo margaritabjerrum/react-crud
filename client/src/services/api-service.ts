@@ -32,7 +32,6 @@ const createBike = async (bikeData: Omit<BikeModel, 'id'>) => {
       power: bikeData.stats.power,
       seatHeight: bikeData.stats.seatHeight,
       weight: bikeData.stats.weight,
-
     },
     images: bikeData.images,
   });
@@ -42,11 +41,28 @@ const deleteBike = async (id: string) => {
   await api.delete(`bikes/${id}`);
 };
 
+const updateBike = async (id: string, bikeData: Omit<BikeModel, 'id'>) => {
+  await api.patch(`bikes/${id}`, {
+    brand: bikeData.brand,
+    model: bikeData.model,
+    year: bikeData.year,
+    price: bikeData.price,
+    stats: {
+      engine: bikeData.stats.engine,
+      power: bikeData.stats.power,
+      seatHeight: bikeData.stats.seatHeight,
+      weight: bikeData.stats.weight,
+    },
+    images: bikeData.images,
+  });
+};
+
 const ApiService = {
   fetchBikes,
   fetchBike,
   createBike,
   deleteBike,
+  updateBike,
 };
 
 export default ApiService;
