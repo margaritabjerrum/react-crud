@@ -5,7 +5,7 @@
       "brand": "Kawasaki",
       "model": "Z650",
       "year": 2022,
-      "price": 8095.00,
+      "price": 8095,
       "stats": {
         "engine": "Parallel-Twin 649cc",
         "power": "67 bhp",
@@ -13,9 +13,9 @@
         "weight": "188kg"
       },
       "images": [
-        "https://mcn-images.bauersecure.com/wp-images/4882/1440x960/z650-side.jpg?mode=max&quality=90&scale=down",
+        "https://mcn-images.bauersecure.com/wp-images/4882/1440x960/z650-corner-side.jpg?mode=max&quality=90&scale=down",
         "https://mcn-images.bauersecure.com/wp-images/4882/1440x960/_z650-static-left.jpg?mode=max&quality=90&scale=down",
-        "https://mcn-images.bauersecure.com/wp-images/4882/1440x960/z650-corner-side.jpg?mode=max&quality=90&scale=down"
+        "https://mcn-images.bauersecure.com/wp-images/4882/1440x960/z650-riding.jpg?mode=max&quality=90&scale=down"
       ]
     },
     {
@@ -23,7 +23,7 @@
       "brand": "Yamaha",
       "model": "MT-07",
       "year": 2022,
-      "price": 7710.00,
+      "price": 7710,
       "stats": {
         "engine": "Parallel-Twin 689cc",
         "power": "72 bhp",
@@ -59,7 +59,7 @@
       "brand": "Yamaha",
       "model": "MT-09 SP",
       "year": 2022,
-      "price": 12600.00,
+      "price": 12600,
       "stats": {
         "engine": "Three-cylinder 889cc",
         "power": "117 bhp",
@@ -77,7 +77,7 @@
       "brand": "Kawasaki",
       "model": "Z900",
       "year": 2022,
-      "price": 10795.00,
+      "price": 10795,
       "stats": {
         "engine": "In-Line-Four 948cc",
         "power": "124 bhp",
@@ -93,9 +93,9 @@
     {
       "id": "1254",
       "brand": "Triumph",
-      "model": "Street Triple 765 RS",      
+      "model": "Street Triple 765 RS",
       "year": 2022,
-      "price": 12990.00,
+      "price": 12990,
       "stats": {
         "engine": "Three-cylinder 765cc",
         "power": "121 bhp",
@@ -113,7 +113,7 @@
       "brand": "Royal Enfield",
       "model": "Continental GT 650",
       "year": 2022,
-      "price": 7390.00,
+      "price": 7390,
       "stats": {
         "engine": "Parallel-Twin 648cc",
         "power": "47 bhp",
@@ -131,7 +131,7 @@
       "brand": "Honda",
       "model": "VFR800",
       "year": 2021,
-      "price": 13500.00,
+      "price": 13500,
       "stats": {
         "engine": "V4 782cc",
         "power": "105 bhp",
@@ -149,7 +149,7 @@
       "brand": "Ducati",
       "model": "Monster",
       "year": 2022,
-      "price": 12600.00,
+      "price": 12600,
       "stats": {
         "engine": "L-Twin 937cc",
         "power": "109 bhp",
@@ -167,7 +167,7 @@
       "brand": "KTM",
       "model": "790 Duke",
       "year": 2022,
-      "price": 9000.00,
+      "price": 9000,
       "stats": {
         "engine": "Parallel-Twin 799cc",
         "power": "105 bhp",
@@ -182,10 +182,10 @@
     },
     {
       "id": "3861",
-      "brand": "Aprilia",
-      "model": "Tuono 660",
+      "brand": "Aprila",
+      "model": "Tuono",
       "year": 2022,
-      "price": 10999.00,
+      "price": 10999,
       "stats": {
         "engine": "Parallel-Twin 659cc",
         "power": "94 bhp",
@@ -203,7 +203,7 @@
       "brand": "Energica",
       "model": "Experia",
       "year": 2021,
-      "price": 26500.00,
+      "price": 26500,
       "stats": {
         "engine": "Electric 75kW",
         "power": "101 bhp",
@@ -215,6 +215,42 @@
         "https://mcn-images.bauersecure.com/wp-images/189066/1440x960/energica-experia-02.jpg?mode=max&quality=90&scale=down",
         "https://mcn-images.bauersecure.com/wp-images/189066/1440x960/energica-experia-01.jpg?mode=max&quality=90&scale=down"
       ]
+    },
+    {
+      "brand": "Ducati",
+      "model": "Panigale V4S",
+      "year": 2021,
+      "price": 30149.95,
+      "stats": {
+        "engine": "V4 1100cc",
+        "power": "213 bhp",
+        "seatHeight": "850mm",
+        "weight": "196kg"
+      },
+      "images": [
+        "https://mcn-images.bauersecure.com/wp-images/5089/1440x960/ducati_panigale_v4_s_02.jpg?mode=max&quality=90&scale=down",
+        "https://mcn-images.bauersecure.com/wp-images/5089/1440x960/ducati_panigale_v4_s_17.jpg?mode=max&quality=90&scale=down",
+        "https://mcn-images.bauersecure.com/wp-images/5089/1440x960/ducati_panigale_v4_s_01.jpg?mode=max&quality=90&scale=down"
+      ],
+      "id": "HHnTeXr"
+    },
+    {
+      "brand": "KTM",
+      "model": "Superduke R Evo",
+      "year": 2022,
+      "price": 21500,
+      "stats": {
+        "engine": "V-Twin 1301cc",
+        "power": "177 bhp",
+        "seatHeight": "835mm",
+        "weight": "191kg"
+      },
+      "images": [
+        "https://mcn-images.bauersecure.com/wp-images/5119/1440x960/ktm_superduke_evo_15.jpg?mode=max&quality=90&scale=down",
+        "https://mcn-images.bauersecure.com/wp-images/5119/1440x960/ktm_superduke_evo_03.jpg?mode=max&quality=90&scale=down",
+        "https://mcn-images.bauersecure.com/wp-images/5119/1440x960/ktm_superduke_evo_01.jpg?mode=max&quality=90&scale=down"
+      ],
+      "id": "jCCSY1d"
     }
   ]
 }
