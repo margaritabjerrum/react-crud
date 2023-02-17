@@ -10,11 +10,11 @@ import routes from 'navigation/routes';
 import useBike from 'hooks/useBike';
 import ImagesField from './images-field';
 import MainStatsField from './main-stats-field';
-import * as Styled from './styled';
+import BrandModelField from './brand-model-fields';
 import PriceYearFields from './price-year-fields';
+import * as Styled from './styled';
 import { btnColorMap, btnMap, titleMap } from './data';
 import { formatValues } from './helpers';
-import BrandModelField from './brand-model-fields';
 
 type BikeFormPageProps = {
   mode?: 'create' | 'update'
@@ -29,8 +29,12 @@ const BikeFormPage: React.FC<BikeFormPageProps> = ({ mode = 'create' }) => {
   const bike = useBike(id);
 
   const postBikeData = async (bikeData: Omit<BikeModel, 'id'>) => {
-    await ApiService.createBike(bikeData);
-    navigate(routes.HomePage);
+    try {
+      await ApiService.createBike(bikeData);
+      navigate(routes.HomePage);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   const updateBikeData = async (bikeId: string, bikeData: Omit<BikeModel, 'id'>) => {
@@ -52,7 +56,7 @@ const BikeFormPage: React.FC<BikeFormPageProps> = ({ mode = 'create' }) => {
         postBikeData(values);
       } else if (id !== undefined) updateBikeData(id, values);
     } catch (error) {
-      alert(error instanceof Error ? error.message : error);
+      console.log((error as Error).message);
     }
   };
 
@@ -61,11 +65,7 @@ const BikeFormPage: React.FC<BikeFormPageProps> = ({ mode = 'create' }) => {
   return (
     <Styled.Container>
       <Styled.PaperForm elevation={4} onSubmit={handleSubmit} ref={formRef}>
-        <Typography
-          variant="h4"
-          color="primary"
-          sx={{ textAlign: 'center' }}
-        >
+        <Typography variant="h4" color="primary" sx={{ textAlign: 'center' }}>
           {titleMap[mode]}
         </Typography>
         <Stack sx={{ gap: 2, mt: 2 }}>

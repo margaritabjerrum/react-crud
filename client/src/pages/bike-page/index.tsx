@@ -7,7 +7,6 @@ import BikeCard from './bike-card/bike-card';
 
 const BikePage = () => {
   const { id } = useParams();
-
   const bike = useBike(id);
 
   if (id === undefined) return <Navigate to={routes.HomePage} />;

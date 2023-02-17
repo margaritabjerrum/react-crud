@@ -23,7 +23,7 @@ const BikeCard: React.FC<BikeCardProps> = ({
   },
   images,
 }) => (
-  <Stack mt={{ md: 10 }}>
+  <Stack mt={{ md: 12 }}>
     <Grid container width="auto" spacing={2} alignItems="center">
       <Grid item xs={12} md={6}>
         <Swiper
@@ -44,7 +44,9 @@ const BikeCard: React.FC<BikeCardProps> = ({
       </Grid>
       <Grid item xs={12} md={6}>
         <Styled.ContentWrapper>
-          <Typography variant="h3" color="primary" sx={{ mb: 5 }}>{`${brand} - ${model}`}</Typography>
+          <Typography variant="h3" color="primary" sx={{ mb: 5 }}>
+            {`${brand} - ${model}`}
+          </Typography>
           <Stack alignItems="center">
             <Typography
               gutterBottom

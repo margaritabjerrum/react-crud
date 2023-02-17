@@ -53,7 +53,6 @@ const MainStatsField: React.FC<MainStatsFieldProps> = ({
           endAdornment: <InputAdornment position="end">mm</InputAdornment>,
         }}
         defaultValue={defaultSeatHeight}
-
       />
       <TextField
         label="Weight"
@@ -65,7 +64,6 @@ const MainStatsField: React.FC<MainStatsFieldProps> = ({
           endAdornment: <InputAdornment position="end">kg</InputAdornment>,
         }}
         defaultValue={defaultWeight}
-
       />
     </Box>
   </Stack>
