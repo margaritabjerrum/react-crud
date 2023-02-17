@@ -3,8 +3,8 @@
 ## System requirements
 [Node.js](https://nodejs.org/en/) v16 or later
 
-To view applications, you must launch server and client apps.
-Make sure you louched server application first, only then Client.
+To view application, you must launch server and client apps.
+Make sure you launch server application first and client application second.
 
 ## Launching Server application
 <div style="padding-left: 40px">
